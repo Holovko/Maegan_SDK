@@ -64,6 +64,8 @@ Permissions for SDK required:
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+6. The SDK library consist huge quantity so please make sure you do not reach a certain quantity of methods or just turn on MultiDex support. See [https://developer.android.com/studio/build/multidex.html](https://developer.android.com/studio/build/multidex.html)
+
 # Using
 
 ### Example of using
@@ -92,7 +94,7 @@ MaeganSDK.getInstance().presentRestaurantList(this, CALL_BACK_CODE);
 
 ```
 
-  3. Response:
+3. Response:
 
 ```
 
@@ -118,5 +120,5 @@ MaeganSDK.getInstance().presentRestaurantList(this, CALL_BACK_CODE);
 
 ```
 
-3. See more example in sample folder.
+3. See more examples in sample folder.
 
