@@ -3,21 +3,18 @@
 1. Add dependency Maegan SDK to build.gradle
 
 ```
-
-compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.9'
+compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.8.1'
 
 ```
 
 2. Add repository for ZenDesk dependency 
 
 ```
-
 repositories{
 
     maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo'}
 
 }
-
 ```
 
 3. Local Properties file stored assets/settings.properties
@@ -25,9 +22,7 @@ repositories{
 4.  AndroidManifest.xml in the <application> add
 
 ```
-
 <application …
-
 tools:replace="android:icon,android:label, android:theme />
 
 ```
@@ -37,31 +32,19 @@ tools:replace="android:icon,android:label, android:theme />
 Permissions for SDK required:
 
     //Normal permissions	
-
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
-
     <uses-permission android:name="android.permission.BROADCAST_STICKY" /> 
 
      //Dangerous permissions   
-
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 6. The SDK library consist huge quantity so please make sure you do not reach a certain quantity of methods or just turn on MultiDex support. See [https://developer.android.com/studio/build/multidex.html](https://developer.android.com/studio/build/multidex.html)
@@ -75,11 +58,8 @@ Permissions for SDK required:
 ```
 
  MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext())
-
-     	    .appConfig(new CustomerAppConfig("dev","1","application ID"))
-
+     	        .appConfig(new CustomerAppConfig("dev","1","application ID"))
                 .additionalCustomerInfo(mAdditionalCustomerInfo)
-
                 .build();
 
  MaeganSDK.initialize(maeganConfig);
@@ -97,7 +77,6 @@ MaeganSDK.getInstance().presentRestaurantList(this, CALL_BACK_CODE);
 3. Response:
 
 ```
-
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +96,6 @@ MaeganSDK.getInstance().presentRestaurantList(this, CALL_BACK_CODE);
             }
         }
     }
-
 ```
 
 3. See more examples in sample folder.
