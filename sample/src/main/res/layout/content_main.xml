@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="8dp">
+
+    <Button
+        android:id="@+id/btn_list"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:text="List restaurants" />
+
+    <Button
+        android:id="@+id/btn_detail"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:text="Detail restaurant" />
+
+    <Button
+        android:id="@+id/btn_one"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:text="List with one restaurant result" />
+
+    <Button
+        android:id="@+id/btn_order_history"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Order history" />
+
+    <Button
+        android:id="@+id/btn_barcode"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Barcode" />
+
+    <Button
+        android:id="@+id/btn_credit_card"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="credit_card" />
+</LinearLayout>
