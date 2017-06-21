@@ -2,14 +2,15 @@
 
 1. Add dependency Maegan SDK to build.gradle
 
-```
-compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.8.1'
-
+```groovy
+dependencies {
+    compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.8.1'
+}
 ```
 
 2. Add repository for ZenDesk dependency 
 
-```
+```groovy
 repositories{
 
     maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo'}
@@ -20,9 +21,8 @@ repositories{
 3. Local Properties file stored assets/settings.properties
 
 4.  AndroidManifest.xml in the <application> add
-
-```
-<application …
+```xml
+<application 
 tools:replace="android:icon,android:label, android:theme />
 
 ```
@@ -31,6 +31,7 @@ tools:replace="android:icon,android:label, android:theme />
 
 Permissions for SDK required:
 
+```xml
     //Normal permissions	
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -46,7 +47,7 @@ Permissions for SDK required:
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+```
 6. The SDK library consist huge quantity so please make sure you do not reach a certain quantity of methods or just turn on MultiDex support. See [https://developer.android.com/studio/build/multidex.html](https://developer.android.com/studio/build/multidex.html)
 
 # Using
@@ -55,7 +56,7 @@ Permissions for SDK required:
 
 1. Initialize in application class:    
 
-```
+```java
 
  MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext())
      	        .appConfig(new CustomerAppConfig("dev","1","application ID"))
@@ -68,19 +69,18 @@ Permissions for SDK required:
 
 2. Request:
 
-```
-
+```java
 MaeganSDK.getInstance().presentRestaurantList(this, CALL_BACK_CODE);
 
 ```
 
 3. Response:
 
-```
+```java
+class ExampleActivity extends Activity {
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ...
         Bundle extras = getIntent().getExtras();
         if(extras !=null && extras.containsKey(MaeganSDK.RESULT_CODE)){
             int callBackCode = extras.getInt(MaeganSDK.REQUEST_CALLBACK);
@@ -95,6 +95,7 @@ MaeganSDK.getInstance().presentRestaurantList(this, CALL_BACK_CODE);
                 }
             }
         }
+    }
     }
 ```
 
