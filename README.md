@@ -4,7 +4,7 @@
 
 ```groovy
 dependencies {
-    compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.8.1'
+    compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.8.5'
 }
 ```
 
@@ -18,7 +18,7 @@ repositories{
 }
 ```
 
-3. Local Properties file stored assets/settings.properties
+3. Add local Properties file stored assets/settings.properties
 
 4.  AndroidManifest.xml in the <application> add
 ```xml
