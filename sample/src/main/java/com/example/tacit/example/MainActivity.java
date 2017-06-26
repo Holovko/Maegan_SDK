@@ -1,5 +1,6 @@
 package com.example.tacit.example;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,22 +25,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         (findViewById(R.id.btn_order_history)).setOnClickListener(this);
         (findViewById(R.id.btn_barcode)).setOnClickListener(this);
         (findViewById(R.id.btn_credit_card)).setOnClickListener(this);
-
-        //handle callback
-        Bundle extras = getIntent().getExtras();
-        if(extras !=null && extras.containsKey(MaeganSDK.RESULT_CODE)){
-            int callBackCode = extras.getInt(MaeganSDK.REQUEST_CALLBACK);
-            int resultCode = extras.getInt(MaeganSDK.RESULT_CODE);
-            switch (resultCode){
-                case RESULT_OK: {
-                    if(callBackCode == CALL_BACK_CODE) {
-                        TableOrder order = getIntent().getParcelableExtra(MaeganSDK.RESULT_DATA);
-                        Log.d(TAG, "onCreate: "+order);
-                    }
-                    break;
-                }
-            }
-        }
     }
 
     private void openListApp() {
@@ -71,6 +56,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_credit_card:
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CALL_BACK_CODE) {
+            switch (resultCode) {
+                case RESULT_OK: {
+                    TableOrder order = data.getParcelableExtra(MaeganSDK.RESULT_TABLE_ORDER);
+                    Log.d(TAG, "onActivityResult: order:" + order);
+                    break;
+                }
+                case RESULT_CANCELED: {
+                    if(data!=null && data.getExtras().containsKey(MaeganSDK.RESULT_ERROR_CODE)){
+                        Log.d(TAG, "onActivityResult: error code:"
+                                + data.getExtras().getInt(MaeganSDK.RESULT_ERROR_CODE));
+                    }
+                    break;
+                }
+            }
         }
     }
 }

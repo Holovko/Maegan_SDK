@@ -4,7 +4,7 @@
 
 ```groovy
 dependencies {
-    compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.8.5'
+    compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.8.6'
 }
 ```
 
@@ -19,6 +19,13 @@ repositories{
 ```
 
 3. Add local Properties file stored assets/settings.properties
+```
+ManageCustomerProfile = NO
+ManagePaymentInstrument = NO
+ClientAppName = appName
+BrandSelector = User
+```
+
 
 4.  AndroidManifest.xml in the <application> add
 ```xml
@@ -78,18 +85,19 @@ MaeganSDK.getInstance().presentRestaurantList(this, CALL_BACK_CODE);
 
 ```java
 class ExampleActivity extends Activity {
-@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Bundle extras = getIntent().getExtras();
-        if(extras !=null && extras.containsKey(MaeganSDK.RESULT_CODE)){
-            int callBackCode = extras.getInt(MaeganSDK.REQUEST_CALLBACK);
-            int resultCode = extras.getInt(MaeganSDK.RESULT_CODE);
-            switch (resultCode){
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CALL_BACK_CODE) {
+            switch (resultCode) {
                 case RESULT_OK: {
-                    if(callBackCode == CALL_BACK_CODE) {
-                        TableOrder order = getIntent().getParcelableExtra(MaeganSDK.RESULT_DATA);
-                        Log.d(TAG, "onCreate: "+order);
+                    TableOrder order = data.getParcelableExtra(MaeganSDK.RESULT_TABLE_ORDER);
+                    break;
+                }
+                case RESULT_CANCELED: {
+                    if(data!=null && data.getExtras().containsKey(MaeganSDK.RESULT_ERROR_CODE)){
+                        Log.d(TAG, "onActivityResult: error code:"
+                                + data.getExtras().getInt(MaeganSDK.RESULT_ERROR_CODE));
                     }
                     break;
                 }
