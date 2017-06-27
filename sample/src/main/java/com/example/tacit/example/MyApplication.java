@@ -14,20 +14,20 @@ import java.util.ArrayList;
 public class MyApplication extends Application {
 
     private MGNCustomerInfo mAdditionalCustomerInfo = new MGNCustomerInfo(
-            new MGNDataExchangeObject("", true),
-            new MGNDataExchangeObject("", true),
-            new MGNDataExchangeObject("", true),
-            new MGNDataExchangeObject("", true),
-            new MGNDataExchangeObject("", false),
-            new MGNDataExchangeObject("", false),
-            new MGNDataExchangeObject("", true),
-            new ArrayList<MGNAddressInfo>(), false);
+            new MGNDataExchangeObject("1001318419", true),
+            new MGNDataExchangeObject("dev+digital6@guruse.com", true),
+            new MGNDataExchangeObject("Ivan", true),
+            new MGNDataExchangeObject("Drago", true),
+            new MGNDataExchangeObject("null", false),
+            new MGNDataExchangeObject("null", false),
+            new MGNDataExchangeObject("2125556688", true),
+            null, false);
 
     @Override
     public void onCreate() {
         super.onCreate();
         MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext())
-                .appConfig(new CustomerAppConfig("dev","1","59E15499-54CC-4AA3-962F-0146F266700F"))
+                .appConfig(new CustomerAppConfig("prod","1001318419","59E15499-54CC-4AA3-962F-0146F266700F"))
                 .additionalCustomerInfo(mAdditionalCustomerInfo)
                 .build();
         MaeganSDK.initialize(maeganConfig);

@@ -30,22 +30,21 @@
         android:id="@+id/btn_order_history"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Order history" />
 
-    <Button
-        android:id="@+id/btn_barcode"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Barcode" />
+        android:text="Order history" />
 
     <Button
         android:id="@+id/btn_credit_card"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
-        android:enabled="false"
         android:text="credit_card" />
+
+    <Button
+        android:id="@+id/btn_barcode"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:text="Barcode" />
+
 
     <Button
         android:id="@+id/btn_list_permissions"

@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = MainActivity.class.getSimpleName();
     private final int CALL_BACK_CODE = 29;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void openDetailRestaurant() {
         MaeganSDK.getInstance().presentRestaurant(this, 7145, 0, CALL_BACK_CODE);
     }
+
+    private void presentOrderHistory() {
+        MaeganSDK.getInstance().presentOrderHistory(this, CALL_BACK_CODE);
+    }
+
+    private void presentCreditCardSelect() {
+        MaeganSDK.getInstance().presentCreditCardSelect(this, CALL_BACK_CODE);
+    }
+
+    private void presentBarcode() {
+        MaeganSDK.getInstance().presentBarcode(this, CALL_BACK_CODE);
+    }
+
+
 
     private void getListPermissions() {
         String[] permissions = MaeganSDK.getInstance().getListOfRequiredPermission();
@@ -98,10 +113,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openOneBrandApp();
                 break;
             case R.id.btn_order_history:
-                break;
-            case R.id.btn_barcode:
+                presentOrderHistory();
                 break;
             case R.id.btn_credit_card:
+                presentCreditCardSelect();
+                break;
+            case R.id.btn_barcode:
+                presentBarcode();
                 break;
             case R.id.btn_list_permissions:
                 getListPermissions();
