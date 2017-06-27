@@ -4,7 +4,7 @@
 
 ```groovy
 dependencies {
-    compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.8.6'
+    compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.8.7'
 }
 ```
 
@@ -55,6 +55,15 @@ Permissions for SDK required:
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 ```
+
+To receive programmatically list of required permissions. You can by this method:
+ 
+ ```java
+ 
+String[] permissions = MaeganSDK.getInstance().getListOfRequiredPermission();
+ 
+ ```
+
 6. The SDK library consist huge quantity so please make sure you do not reach a certain quantity of methods or just turn on MultiDex support. See [https://developer.android.com/studio/build/multidex.html](https://developer.android.com/studio/build/multidex.html)
 
 # Using
@@ -85,25 +94,29 @@ MaeganSDK.getInstance().presentRestaurantList(this, CALL_BACK_CODE);
 
 ```java
 class ExampleActivity extends Activity {
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == CALL_BACK_CODE) {
-            switch (resultCode) {
-                case RESULT_OK: {
-                    TableOrder order = data.getParcelableExtra(MaeganSDK.RESULT_TABLE_ORDER);
-                    break;
-                }
-                case RESULT_CANCELED: {
-                    if(data!=null && data.getExtras().containsKey(MaeganSDK.RESULT_ERROR_CODE)){
-                        Log.d(TAG, "onActivityResult: error code:"
-                                + data.getExtras().getInt(MaeganSDK.RESULT_ERROR_CODE));
-                    }
-                    break;
-                }
-            }
-        }
-    }
+      @Override
+      protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+          super.onActivityResult(requestCode, resultCode, data);
+          if(requestCode == CALL_BACK_CODE) {
+              switch (resultCode) {
+                  case RESULT_OK: {
+                      TableOrder order = data.getParcelableExtra(MaeganSDK.RESULT_TABLE_ORDER);
+                      Log.d(TAG, "onActivityResult: order:" + order);
+                      break;
+                  }
+                  case RESULT_CANCELED: {
+                      if(data!=null && data.getExtras().containsKey(MaeganSDK.RESULT_ERROR)){
+                          SDKError error = data.getExtras().getParcelable(MaeganSDK.RESULT_ERROR);
+                          if(error!=null) {
+                              Log.d(TAG, "onActivityResult: error code:" + error.getCode());
+                              Log.d(TAG, "onActivityResult: error message:" + error.getMessage());
+                          }
+                      }
+                      break;
+                  }
+              }
+          }
+      }
     }
 ```
 

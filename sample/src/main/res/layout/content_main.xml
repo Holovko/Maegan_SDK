@@ -24,7 +24,7 @@
         android:id="@+id/btn_one"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
-        android:text="List with one restaurant result" />
+        android:text="List with one brand" />
 
     <Button
         android:id="@+id/btn_order_history"
@@ -46,4 +46,10 @@
         android:layout_height="wrap_content"
         android:enabled="false"
         android:text="credit_card" />
+
+    <Button
+        android:id="@+id/btn_list_permissions"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:text="List permissions" />
 </LinearLayout>
