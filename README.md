@@ -24,6 +24,7 @@ ManageCustomerProfile = NO
 ManagePaymentInstrument = NO
 ClientAppName = appName
 BrandSelector = User
+DisplayOrderTypeBar = NO
 ```
 
 
@@ -120,5 +121,20 @@ class ExampleActivity extends Activity {
     }
 ```
 
-3. See more examples in sample folder.
+4. See more examples in sample folder.
 
+### Additional customizations
+
+1. To change logo you should override resource in path /res/drawable/mgn_logo_home_small.png
+
+2. To change splash screen you should override resource mgn_splash.png in paths  /res/drawable-mdpi/
+/res/drawable-hdpi/, /res/drawable-xhdpi/, /res/drawable-xxhdpi/ 
+3. To change colors u should override color identifiers in /res/values:
+```xml
+<resources>
+    <color name="mgn_primary">#3F51B5</color>
+    <color name="mgn_primary_dark">#303F9F</color>
+    <color name="mgn_accent">#FF4081</color>
+    <color name="mgn_tabs">#303F9F</color>
+</resources>
+```
