@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="mgn_primary">#E44418</color> <!-- // app bar, action bar, additional -->
+    <color name="mgn_primary_dark">#E44418</color> <!-- // ow not used yet in SDK version. -->
+    <color name="mgn_accent">#E44418</color> <!-- // // progress dialog, floating button and main buttons-->
+    <color name="mgn_tabs">#B8320D</color> <!-- // // color of tabs when DisplayOrderTypeBar = YES-->
 </resources>
