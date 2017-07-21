@@ -24,7 +24,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext())
-                .appConfig(new CustomerAppConfig("dev","133419","59E15499-54CC-4AA3-962F-0146F266700F"))
+                .appConfig(new CustomerAppConfig("prod","133419","59E15499-54CC-4AA3-962F-0146F266700F"))
                 .additionalCustomerInfo(mAdditionalCustomerInfo)
                 .build();
         MaeganSDK.initialize(maeganConfig);

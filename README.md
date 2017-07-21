@@ -4,7 +4,7 @@
 
 ```groovy
 dependencies {
-    compile ‘com.tacitinnovations.maegansdk:maegan-sdk:0.9.2'
+    compile 'com.tacitinnovations.maegansdk:maegan-sdk:0.9.7.6'
 }
 ```
 
