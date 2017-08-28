@@ -4,7 +4,7 @@
 
 ```groovy
 dependencies {
-    compile 'com.tacitinnovations.maegansdk:maegan-sdk:0.9.7.6'
+    compile 'com.tacitinnovations.maegansdk:maegan-sdk:0.9.7.9'
 }
 ```
 
@@ -12,7 +12,9 @@ dependencies {
 
 ```groovy
 repositories{
-
+    maven {
+        url "https://maven.google.com"
+    }
     maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo'}
 
 }
