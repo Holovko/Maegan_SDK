@@ -20,7 +20,7 @@ repositories{
 }
 ```
 
-3. Add repository for ZenDesk dependency 
+3. Add databinding 
 
 ```groovy
     dataBinding {
