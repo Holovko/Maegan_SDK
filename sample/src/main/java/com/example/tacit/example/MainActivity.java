@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private final int CALL_BACK_CODE = 29;
-
+    private static final int BRAND_ID = 230;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,32 +44,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openListApp() {
-        MaeganSDK.getInstance().presentRestaurantList(this, CALL_BACK_CODE);
+        MaeganSDK.getInstance().presentRestaurantList(this,BRAND_ID, CALL_BACK_CODE);
     }
     private void openOneBrandApp() {
-        MaeganSDK.getInstance().presentRestaurantList(this, CALL_BACK_CODE, 3113);
+        MaeganSDK.getInstance().presentRestaurantList(this, BRAND_ID, CALL_BACK_CODE);
     }
 
     private void openDetailRestaurant() {
-        MaeganSDK.getInstance().presentRestaurant(this, 7145, 0, CALL_BACK_CODE);
+        MaeganSDK.getInstance().presentRestaurant(this, 7145, 0, BRAND_ID, CALL_BACK_CODE);
     }
 
     private void presentOrderHistory() {
-        MaeganSDK.getInstance().presentOrderHistory(this, CALL_BACK_CODE);
+        MaeganSDK.getInstance().presentOrderHistory(this,BRAND_ID, CALL_BACK_CODE);
     }
 
     private void presentCreditCardSelect() {
-        MaeganSDK.getInstance().presentCreditCardSelect(this, CALL_BACK_CODE);
+        MaeganSDK.getInstance().presentCreditCardSelect(this,BRAND_ID, CALL_BACK_CODE);
     }
 
     private void presentBarcode() {
-        MaeganSDK.getInstance().presentBarcode(this, CALL_BACK_CODE);
+        MaeganSDK.getInstance().presentBarcode(this,BRAND_ID, CALL_BACK_CODE);
     }
 
 
 
     private void getListPermissions() {
-        String[] permissions = MaeganSDK.getInstance().getListOfRequiredPermission();
+        String[] permissions = MaeganSDK.getListOfRequiredPermission();
         for (String permission : permissions) {
             Log.d(TAG, "getListPermissions: permission = "+permission);
         }

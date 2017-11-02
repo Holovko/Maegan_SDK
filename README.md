@@ -20,7 +20,15 @@ repositories{
 }
 ```
 
-3. Add local Properties file stored assets/settings.properties
+3. Add repository for ZenDesk dependency 
+
+```groovy
+    dataBinding {
+        enabled = true
+    }
+```
+
+4. Add local Properties file stored assets/settings.properties
 ```
 ManageCustomerProfile = NO
 ManagePaymentInstrument = NO
@@ -30,14 +38,14 @@ DisplayOrderTypeBar = NO
 ```
 
 
-4.  AndroidManifest.xml in the <application> add
+5.  AndroidManifest.xml in the <application> add
 ```xml
 <application 
 tools:replace="android:icon,android:label, android:theme />
 
 ```
 
-5. If targetSdkVersion in gradle "22" or lower just add required permissions to AndroidManifest, If higher - you need request dangerous permissions before use SDK. See [https://developer.android.com/training/permissions/requesting.html](https://developer.android.com/training/permissions/requesting.html) 
+6. If targetSdkVersion in gradle "22" or lower just add required permissions to AndroidManifest, If higher - you need request dangerous permissions before use SDK. See [https://developer.android.com/training/permissions/requesting.html](https://developer.android.com/training/permissions/requesting.html) 
 
 Permissions for SDK required:
 
@@ -63,11 +71,11 @@ To receive programmatically list of required permissions. You can by this method
  
  ```java
  
-String[] permissions = MaeganSDK.getInstance().getListOfRequiredPermission();
+String[] permissions = MaeganSDK.getListOfRequiredPermission();
  
  ```
 
-6. The SDK library consist huge quantity so please make sure you do not reach a certain quantity of methods or just turn on MultiDex support. See [https://developer.android.com/studio/build/multidex.html](https://developer.android.com/studio/build/multidex.html)
+7. The SDK library consist huge quantity so please make sure you do not reach a certain quantity of methods or just turn on MultiDex support. See [https://developer.android.com/studio/build/multidex.html](https://developer.android.com/studio/build/multidex.html)
 
 # Using
 
