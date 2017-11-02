@@ -22,7 +22,6 @@ android {
         enabled = true
     }
 }
-test3
 
 repositories {
     maven {
