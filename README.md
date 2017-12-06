@@ -86,7 +86,7 @@ String[] permissions = MaeganSDK.getListOfRequiredPermission();
 ```java
 
  MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext())
-     	        .appConfig(new CustomerAppConfig("dev","1","application ID"))
+     	        .appConfig(new CustomerAppConfig("dev", "1F7D8922E38C4085A48BC6A1D9C3655A", "aramarkCuSDK"))
                 .additionalCustomerInfo(mAdditionalCustomerInfo)
                 .build();
 

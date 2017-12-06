@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private final int CALL_BACK_CODE = 29;
-    private static final int BRAND_ID = 230;
+    private static final int BRAND_ID = 3113;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         (findViewById(R.id.btn_order_history)).setOnClickListener(this);
         (findViewById(R.id.btn_barcode)).setOnClickListener(this);
         (findViewById(R.id.btn_credit_card)).setOnClickListener(this);
+        (findViewById(R.id.btn_cards)).setOnClickListener(this);
         (findViewById(R.id.btn_list_permissions)).setOnClickListener(this);
     }
 
@@ -64,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void presentBarcode() {
         MaeganSDK.getInstance().presentBarcode(this,BRAND_ID, CALL_BACK_CODE);
+    }
+
+    private void presentCards() {
+        MaeganSDK.getInstance().presentGiftCards(this, BRAND_ID, CALL_BACK_CODE);
     }
 
 
@@ -123,6 +128,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_list_permissions:
                 getListPermissions();
+                break;
+            case R.id.btn_cards:
+                presentCards();
                 break;
         }
     }
