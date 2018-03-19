@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private final int CALL_BACK_CODE = 29;
-    private static final int BRAND_ID = 3113;
+    private static final int BRAND_ID = 460;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

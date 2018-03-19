@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.example.tacit.example123"
         minSdkVersion 19
@@ -22,16 +22,7 @@ android {
         enabled = true
     }
 }
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        def requested = details.requested
-        if (requested.group == 'com.android.support') {
-            if (!requested.name.startsWith("multidex")) {
-                details.useVersion '25.4.0'
-            }
-        }
-    }
-}
+
 repositories {
     maven {
         url "https://maven.google.com"
@@ -44,7 +35,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile ('com.tacitinnovations.maegansdk:maegan-sdk:0.9.8.8'){
+    compile ('com.tacitinnovations.maegansdk:maegan-sdk:0.9.9.3'){
         changing = true
     }
     compile "com.android.support.test.espresso:espresso-idling-resource:3.0.1"

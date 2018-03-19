@@ -3,30 +3,32 @@ package com.example.tacit.example;
 import android.app.Application;
 
 import com.tacitinnovations.core.sdk.CustomerAppConfig;
+import com.tacitinnovations.core.sdk.MGNAddressInfo;
 import com.tacitinnovations.core.sdk.MGNCustomerInfo;
 import com.tacitinnovations.core.sdk.MGNDataExchangeObject;
 import com.tacitinnovations.core.sdk.MaeganConfig;
 import com.tacitinnovations.core.sdk.MaeganSDK;
+import java.util.ArrayList;
 
 public class MyApplication extends Application {
 
     private MGNCustomerInfo mAdditionalCustomerInfo = new MGNCustomerInfo(
-            new MGNDataExchangeObject("10013418419", true),
-            new MGNDataExchangeObject("dev1049+digital6@guruse.com", true),
-            new MGNDataExchangeObject("Ivan", true),
-            new MGNDataExchangeObject("Drago", true),
-            new MGNDataExchangeObject("null", false),
-            new MGNDataExchangeObject("null", false),
-            new MGNDataExchangeObject("21254556688", true),
-            null, false);
+        new MGNDataExchangeObject("", true),
+        new MGNDataExchangeObject("brenda@maegan.co", true),
+        new MGNDataExchangeObject("Brenda", true), new MGNDataExchangeObject("Crainic", true),
+        new MGNDataExchangeObject("", false),
+        new MGNDataExchangeObject("", false),
+        new MGNDataExchangeObject("6478967107", true),
+        new ArrayList<MGNAddressInfo>(), false);
+
 
     @Override
     public void onCreate() {
         super.onCreate();
-        MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext())
-                .appConfig(new CustomerAppConfig("dev", "1F7D8922E38C4085A48BC6A1D9C3655A", "aramarkCuSDK"))
-                .additionalCustomerInfo(mAdditionalCustomerInfo)
-                .build();
+        MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext()).appConfig(
+            new CustomerAppConfig("prod", "51EDEFC552D14427B0D344A461C834CD", "aramarkCuSDK"))
+            .additionalCustomerInfo(mAdditionalCustomerInfo)
+            .build();
         MaeganSDK.initialize(maeganConfig);
     }
 }
