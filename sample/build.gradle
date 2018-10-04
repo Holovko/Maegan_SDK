@@ -4,45 +4,64 @@ apply plugin: "kotlin-kapt"
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
-    defaultConfig {
-        applicationId "com.example.tacit.example123"
-        minSdkVersion 19
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
+  signingConfigs {
+    config {
+      keyAlias 'restolinkx'
+      keyPassword 'restolinkx'
+      storeFile file('/Users/tacit/Git/RestoLinkx-Android/keys/restolinkx.keystore.key')
+      storePassword 'restolinkx'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+  }
+  compileSdkVersion 27
+  buildToolsVersion "28.0.2"
+  defaultConfig {
+    applicationId "com.example.tacit.example123"
+    minSdkVersion 19
+    targetSdkVersion 26
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    multiDexEnabled true
+  }
+  buildTypes {
+    debug {
+/*
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard-project.pro'
+*/
     }
-    dataBinding {
-        enabled = true
+    release {
+/*      shrinkResources true
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard-project.pro'*/
     }
+  }
+  dataBinding {
+    enabled = true
+  }
+  lintOptions {
+    abortOnError false
+  }
+}
+
+androidExtensions {
+    experimental = true
 }
 
 repositories {
     maven {
         url "https://maven.google.com"
     }
+    maven {
+        url "https://dl.bintray.com/holovko/maeganSDK"
+    }
     maven { url 'https://zendesk.artifactoryonline.com/zendesk/repo' }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile ('com.tacitinnovations.maegansdk:maegan-sdk:0.9.9.4'){
-        changing = true
-
-    }
-    compile "com.android.support.test.espresso:espresso-idling-resource:3.0.1"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+  compile fileTree(include: ['*.jar'], dir: 'libs')
+  compile('com.tacitinnovations.maegansdk:maegan-sdk:1.0.10') {
+    changing = true
+  }
+  testCompile 'junit:junit:4.12'
 }

@@ -14,7 +14,7 @@ public class MyApplication extends Application {
 
     private MGNCustomerInfo mAdditionalCustomerInfo = new MGNCustomerInfo(
         new MGNDataExchangeObject("", true),
-        new MGNDataExchangeObject("brenda@maegan.co", true),
+        new MGNDataExchangeObject("brenda@maegan.c", true),
         new MGNDataExchangeObject("Brenda", true), new MGNDataExchangeObject("Crainic", true),
         new MGNDataExchangeObject("", false),
         new MGNDataExchangeObject("", false),
@@ -26,7 +26,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext()).appConfig(
-            new CustomerAppConfig("prod", "51EDEFC552D14427B0D344A461C834CD", "aramarkCuSDK"))
+            new CustomerAppConfig("prod", "51EDEFC552D14427B0D344A461C834CD", "guruseSDK"))
             .additionalCustomerInfo(mAdditionalCustomerInfo)
             .build();
         MaeganSDK.initialize(maeganConfig);

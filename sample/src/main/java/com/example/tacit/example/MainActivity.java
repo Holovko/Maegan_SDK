@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.tacitinnovations.core.api.model.TableOrder;
+import com.tacitinnovations.core.core.api.model.TableOrder;
 import com.tacitinnovations.core.sdk.MaeganSDK;
 import com.tacitinnovations.core.sdk.app.SDKError;
 
@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private final int CALL_BACK_CODE = 29;
-    private static final int BRAND_ID = 460;
+    private static final int BRAND_ID = 508;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
