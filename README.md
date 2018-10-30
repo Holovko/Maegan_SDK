@@ -20,9 +20,14 @@ Supports minSdkVersion: 19
 
 # Installation
 
-1. Add dependency Maegan SDK to build.gradle
+1. Add plugins and dependency Maegan SDK to build.gradle
 
 ```groovy
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
+apply plugin: 'kotlin-android-extensions'
+
 dependencies {
   compile 'com.tacitinnovations.maegansdk:maegan-sdk:1.0.10'
 }
@@ -48,7 +53,7 @@ repositories{
     }
 ```
 
-4. Add local Properties file stored assets/settings.properties
+4. Add local Properties file stored assets/settings.properties (for explanation please see Additional customizations) 
 ```
 ManageCustomerProfile = NO
 ManagePaymentInstrument = NO
@@ -64,31 +69,6 @@ DisplayOrderTypeBar = NO
 tools:replace="android:icon,android:label, android:theme />
 
 ```
-
-6. If targetSdkVersion in gradle "22" or lower just add required permissions to AndroidManifest, If higher - you need request dangerous permissions before use SDK. See [https://developer.android.com/training/permissions/requesting.html](https://developer.android.com/training/permissions/requesting.html) 
-
-Permissions for SDK required:
-
-```xml
-    //Normal permissions	
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.BROADCAST_STICKY" /> 
-
-     //Dangerous permissions   
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-```
-
-To receive programmatically list of required permissions. You can by this method:
- 
 
 7. The SDK library consist huge quantity so please make sure you do not reach a certain quantity of methods or just turn on MultiDex support. See [https://developer.android.com/studio/build/multidex.html](https://developer.android.com/studio/build/multidex.html)
 
@@ -148,13 +128,21 @@ class ExampleActivity extends Activity {
 
 4. See more examples in sample folder.
 
-### Additional customizations
+### Additional configuration and customizations
+1. Local Properties file stored assets/settings.properties
 
-1. To change logo you should override resource in path /res/drawable/mgn_logo_home_small.png
+* **ManageCustomerProfile**: set YES if the customer profile should be managed by the MaeganSDK. Set NO, if the customer profile should be managed by your app. In this case your app must set the DataExchangeDelegate that conform to
+* **ClientAppName**: given client app name
+* **BrandSelector**: company brand selector type. Depending on the value, “Search”/“View More Locations” buttons on the Landing screen display different screens, logic of presenting the list of the restaurants changes. Possible values are
+o None: all restaurants are displayed, Search button allows to search restaurants by name.
+o Location: only the restaurants of the selected brands are displayed. If no brand is selected, the nearest restaurant’s brand is selected by default. The search button opens brand selection screen.
+o User:onlytherestaurantsoftheselectedbrandsaredisplayed.Searchbutton opens brand selection screen.
+* **DisplayOrderTypeBar**: set YES if the order type bar (at the top) should be displayed on the Landing screen. Set NO to permanently hide it
 
-2. To change splash screen you should override resource mgn_splash.png in paths  /res/drawable-mdpi/
+2. To change logo you should override resource in path /res/drawable/mgn_logo_home_small.png
+3. To change splash screen you should override resource mgn_splash.png in paths  /res/drawable-mdpi/
 /res/drawable-hdpi/, /res/drawable-xhdpi/, /res/drawable-xxhdpi/ 
-3. To change colors you should override color identifiers in /res/values:
+4. To change colors you should override color identifiers in /res/values:
 ```xml
 <resources>
     <color name="mgn_primary">#3F51B5</color> <!-- // app bar, action bar, additional -->
