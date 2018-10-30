@@ -3,18 +3,20 @@
 The maeganSDK allows to incorporate ordering with maegan platform in your app. You need a client App Id / client App Name and the external customer Id.
 
 High-level assumptions:
-⋅⋅* The wrapper app maintains the customer information and ensures the user is logged in and authenticated when the SDK is invoked.
-⋅⋅* The wrapper app may process payments outside of the SDK
+* The wrapper app maintains the customer information and ensures the user is logged in and authenticated when the SDK is invoked.
+* The wrapper app may process payments outside of the SDK
+
 The SDK incorporates multiple views:
-⋅⋅* Restaurant view – enables user to view one location, browse menus, order and pay
-⋅⋅* Restaurants list view – enables users to view multiple locations, browser their menus,
+* Restaurant view – enables user to view one location, browse menus, order and pay
+* Restaurants list view – enables users to view multiple locations, browser their menus,
 order and pay
-⋅⋅* Order history view – enables users to see their order history and reorder
-⋅⋅* Credit card view – enables users to setup a credit card on file; please note this view is
+* Order history view – enables users to see their order history and reorder
+* Credit card view – enables users to setup a credit card on file; please note this view is
 not used for wallet integrations
-⋅⋅* Pay at the counter view – enables users to present a barcode and pay with the credit
+* Pay at the counter view – enables users to present a barcode and pay with the credit
 card on file; this view is valid only for locations running on Oracle (all versions) and Volante Systems.
 
+Supports minSdkVersion: 19
 
 # Installation
 
@@ -152,12 +154,12 @@ class ExampleActivity extends Activity {
 
 2. To change splash screen you should override resource mgn_splash.png in paths  /res/drawable-mdpi/
 /res/drawable-hdpi/, /res/drawable-xhdpi/, /res/drawable-xxhdpi/ 
-3. To change colors u should override color identifiers in /res/values:
+3. To change colors you should override color identifiers in /res/values:
 ```xml
 <resources>
-    <color name="mgn_primary">#3F51B5</color>
-    <color name="mgn_primary_dark">#303F9F</color>
-    <color name="mgn_accent">#FF4081</color>
-    <color name="mgn_tabs">#303F9F</color>
+    <color name="mgn_primary">#3F51B5</color> <!-- // app bar, action bar, additional -->
+    <color name="mgn_primary_dark">#303F9F</color> <!-- // status bar version. -->
+    <color name="mgn_accent">#FF4081</color> <!-- // progress dialog, floating button and main buttons-->
+    <color name="mgn_tabs">#303F9F</color> <!-- // color of tabs -->
 </resources>
 ```
