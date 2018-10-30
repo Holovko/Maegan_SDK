@@ -25,15 +25,8 @@ android {
   }
   buildTypes {
     debug {
-/*
-      minifyEnabled true
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard-project.pro'
-*/
     }
     release {
-/*      shrinkResources true
-      minifyEnabled true
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard-project.pro'*/
     }
   }
   dataBinding {
@@ -59,9 +52,9 @@ repositories {
 }
 
 dependencies {
-  compile fileTree(include: ['*.jar'], dir: 'libs')
-  compile('com.tacitinnovations.maegansdk:maegan-sdk:1.0.10') {
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+  implementation('com.tacitinnovations.maegansdk:maegan-sdk:1.0.10') {
     changing = true
   }
-  testCompile 'junit:junit:4.12'
+  testImplementation 'junit:junit:4.12'
 }

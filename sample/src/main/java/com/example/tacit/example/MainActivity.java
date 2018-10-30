@@ -2,10 +2,10 @@ package com.example.tacit.example;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import android.support.v7.app.AppCompatActivity;
 import com.tacitinnovations.core.core.api.model.TableOrder;
 import com.tacitinnovations.core.sdk.MaeganSDK;
 import com.tacitinnovations.core.sdk.app.SDKError;
@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private final int CALL_BACK_CODE = 29;
-    private static final int BRAND_ID = 508;
+    private static final int BRAND_ID = 230;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
