@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openDetailRestaurant() {
-        MaeganSDK.getInstance().presentRestaurant(this, 7145, 0, BRAND_ID, CALL_BACK_CODE);
+        MaeganSDK.getInstance().presentRestaurant(this, 368, 0, BRAND_ID, CALL_BACK_CODE);
     }
 
     private void presentOrderHistory() {
