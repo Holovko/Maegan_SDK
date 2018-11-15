@@ -58,12 +58,4 @@
       android:layout_height="wrap_content"
       android:text="Barcode"
       />
-
-
-  <Button
-      android:id="@+id/btn_list_permissions"
-      android:layout_width="@dimen/button_width"
-      android:layout_height="wrap_content"
-      android:text="List permissions"
-      />
 </LinearLayout>

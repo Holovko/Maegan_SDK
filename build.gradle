@@ -3,9 +3,9 @@
 buildscript {
     ext.kotlin_version = '1.2.71'
     repositories {
+        google()
         maven { url "https://dl.bintray.com/holovko/maeganSDK" }
         jcenter()
-        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'
@@ -18,8 +18,8 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
 }
 
