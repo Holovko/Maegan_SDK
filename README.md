@@ -29,7 +29,7 @@ apply plugin: "kotlin-kapt"
 apply plugin: 'kotlin-android-extensions'
 
 dependencies {
-  compile 'com.tacitinnovations.maegansdk:maegan-sdk:1.0.11'
+  compile 'com.tacitinnovations.maegansdk:maegan-sdk:1.0.13'
 }
 ```
 
