@@ -53,7 +53,7 @@ repositories {
 
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
-  implementation('com.tacitinnovations.maegansdk:maegan-sdk:1.0.14') {
+  implementation('com.tacitinnovations.maegansdk:maegan-sdk:1.0.15') {
     changing = true
   }
   testImplementation 'junit:junit:4.12'

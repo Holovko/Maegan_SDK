@@ -26,7 +26,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext()).appConfig(
-            new CustomerAppConfig("prod", "140CAA902719481C94E0D8ED71A94E8E", "guruseSDK"))
+            new CustomerAppConfig("dev", "140CAA902719481C94E0D8ED71A94E8E", "guruseSDK"))
             .additionalCustomerInfo(mAdditionalCustomerInfo)
             .build();
         MaeganSDK.initialize(maeganConfig);
