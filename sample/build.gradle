@@ -4,14 +4,6 @@ apply plugin: "kotlin-kapt"
 apply plugin: 'kotlin-android-extensions'
 
 android {
-  signingConfigs {
-    config {
-      keyAlias 'restolinkx'
-      keyPassword 'restolinkx'
-      storeFile file('/Users/tacit/Git/RestoLinkx-Android/keys/restolinkx.keystore.key')
-      storePassword 'restolinkx'
-    }
-  }
   compileSdkVersion 27
   buildToolsVersion "28.0.2"
   defaultConfig {
@@ -53,8 +45,8 @@ repositories {
 
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
-  implementation('com.tacitinnovations.maegansdk:maegan-sdk:1.0.15') {
-    changing = true
+  implementation('com.tacitinnovations.maegansdk:maegan-sdk:1.0.23') {
+      changing = true
   }
   testImplementation 'junit:junit:4.12'
 }
