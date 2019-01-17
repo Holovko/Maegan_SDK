@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.tacitinnovations.core.core.api.model.TableOrder;
+import com.tacitinnovations.core.sdk.MGNExchangeDiscount;
 import com.tacitinnovations.core.sdk.MGNExchangePayment;
 import com.tacitinnovations.core.sdk.MGNExchangePaymentData;
 import com.tacitinnovations.core.sdk.MGNExchangePlaceOrderResult;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private final int CALL_BACK_CODE = 29;
-    private static final int BRAND_ID = 3113;
+    private static final int BRAND_ID = 1563;
     private MGNOrderExchangeCalcTotals mMgnOrderExchangeCalcTotals;
 
     @Override
@@ -69,11 +70,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openDetailRestaurant() {
-        MaeganSDK.getInstance().presentRestaurant(this, 368, 0, BRAND_ID, CALL_BACK_CODE);
+        MaeganSDK.getInstance().presentRestaurant(this, 7147, 0, BRAND_ID, CALL_BACK_CODE);
     }
 
     private void openRestaurantMenu() {
-        MaeganSDK.getInstance().presentRestaurantMenu(this, 5103, "TakeOutOrder", 1, CALL_BACK_CODE);
+        MaeganSDK.getInstance().presentRestaurantMenu(this, 7147, "InRestaurantQuickOrder", 1, CALL_BACK_CODE);
     }
 
     private void openOrderReceipt() {
@@ -84,27 +85,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Make a template of MGNOrderExchangeOrder to place on server
         MGNOrderExchangeOrder mgnOrderExchangeOrder = new MGNOrderExchangeOrder();
         mgnOrderExchangeOrder.setLocationId(mMgnOrderExchangeCalcTotals.getLocationId());
-        mgnOrderExchangeOrder.setOrderType("TakeOutOrder");
+        mgnOrderExchangeOrder.setOrderType("InRestaurantQuickOrder");
         mgnOrderExchangeOrder.setOrderMenuItems(mMgnOrderExchangeCalcTotals.getOrderMenuItems());
         mgnOrderExchangeOrder.setUserGuid(mMgnOrderExchangeCalcTotals.getUserGuid());
         mgnOrderExchangeOrder.setUserData(new MGNExchangeUserData("John", "Snow", "aaa@bbb.com", "0123456789", "12345"));
-        MGNExchangePayment payment = new MGNExchangePayment("Credit", mMgnOrderExchangeCalcTotals.getTableCheck().getTotalAmount(), "payment_transaction_id", "visa");
-        MGNExchangePaymentData paymentData = new MGNExchangePaymentData();
-        paymentData.setTipAmount(mMgnOrderExchangeCalcTotals.getTableCheck().getTipsAmount());
-        paymentData.setTotalAmount(mMgnOrderExchangeCalcTotals.getTableCheck().getTotalAmount());
-        List<MGNExchangePayment> payments = new ArrayList<>();
-        payments.add(payment);
-        paymentData.setPayments(payments);
+        MGNExchangePaymentData paymentData = new MGNExchangePaymentData("PayWithCash");
         mgnOrderExchangeOrder.setPaymentData(paymentData);
-        mgnOrderExchangeOrder.setExternalOrderId("some externalOrderId");
         mgnOrderExchangeOrder.setTableReference("table RED");
         mgnOrderExchangeOrder.setTargetTime("07-12-2018_11-16-26");
+        MGNExchangeDiscount mgnExchangeDiscount = new MGNExchangeDiscount("discountId", "Cool Discount", 3.15f);
+        List<MGNExchangeDiscount> discountList = new ArrayList<>();
+        discountList.add(mgnExchangeDiscount);
+        mgnOrderExchangeOrder.setDiscounts(discountList);
 
         MaeganSDK.getInstance().placeOrder(this, mgnOrderExchangeOrder, CALL_BACK_CODE);
     }
 
     private void editPreparedOrder() {
-        MaeganSDK.getInstance().editOrderDetails(this, 5103, "TakeOutOrder", 1, CALL_BACK_CODE);
+        MaeganSDK.getInstance().editOrderDetails(this, 7147, "InRestaurantQuickOrder", 1, CALL_BACK_CODE);
     }
 
     private void presentOrderHistory() {

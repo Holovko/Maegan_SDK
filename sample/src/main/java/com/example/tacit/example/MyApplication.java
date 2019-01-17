@@ -26,7 +26,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext()).appConfig(
-            new CustomerAppConfig("dev", "140CAA902719481C94E0D8ED71A94E8E", "guruseSDK"))
+                new CustomerAppConfig("dev", "eyJ4NXQiOiJaV0ptTVdJeVlqUTFZVE00WldRM05XRTROMkl5WWpjeU5UZzRabVV6TXpBek9HVXlPRGxtTUEiLCJraWQiOiJkMGVjNTE0YTMyYjZmODhjMGFiZDEyYTI4NDA2OTliZGQzZGViYTlkIiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiLUZRV3YxSGl5Q3RnMHhFUy1NNEkzZyIsInN1YiI6ImIwYzJjZjY1LTdkZDQtNGU4Ny1iYzllLTdhZWEzMzg5ZjE4NSIsImlzcyI6Imh0dHBzOlwvXC9pZG0tc3RnLnZlbnVldGl6ZS5jb21cL29hdXRoMlwvdG9rZW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0YWNpdHVzZXIxQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJUZXN0IiwidXVpZCI6ImIwYzJjZjY1LTdkZDQtNGU4Ny1iYzllLTdhZWEzMzg5ZjE4NSIsImFjciI6InVybjptYWNlOmluY29tbW9uOmlhcDpzaWx2ZXIiLCJhdWQiOlsiQVJiWTVyRzk2WlBQWnhxV3l5MmZRd0htQ3VjYSJdLCJhenAiOiJBUmJZNXJHOTZaUFBaeHFXeXkyZlF3SG1DdWNhIiwiZXhwIjoxNTQ1NzgxOTcxLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJpYXQiOjE1NDUxNzcxNzEsImVtYWlsIjoidGFjaXR1c2VyMUBnbWFpbC5jb20ifQ.JLIvAr_FCCGK0IbMO2RoBb8CI3h4x0yLaFsrTbpMkBP-XvOs3EbUR2lIqZMCuMRv2z9lNAZGfpg5Rf60Eta0u0FKlq0bPOeT2WwaosJ-MpT1zK2CD5lmHnfIzHyPoFXwIke8CasEWPqAp-5-PUYXtdEIRyoCEVd_EZPywX8yCIA", "venutizeSDK"))
             .additionalCustomerInfo(mAdditionalCustomerInfo)
             .build();
         MaeganSDK.initialize(maeganConfig);
