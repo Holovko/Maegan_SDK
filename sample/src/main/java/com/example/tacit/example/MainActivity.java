@@ -2,7 +2,6 @@ package com.example.tacit.example;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.tacitinnovations.core.core.api.model.TableOrder;
+import com.tacitinnovations.core.sdk.MGNExchangeAdditionalPaymentData;
 import com.tacitinnovations.core.sdk.MGNExchangeDiscount;
 import com.tacitinnovations.core.sdk.MGNExchangePayment;
 import com.tacitinnovations.core.sdk.MGNExchangePaymentData;
@@ -82,21 +82,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Please make an order first", Toast.LENGTH_SHORT).show();
             return;
         }
-        //Make a template of MGNOrderExchangeOrder to place on server
         MGNOrderExchangeOrder mgnOrderExchangeOrder = new MGNOrderExchangeOrder();
         mgnOrderExchangeOrder.setLocationId(mMgnOrderExchangeCalcTotals.getLocationId());
         mgnOrderExchangeOrder.setOrderType("InRestaurantQuickOrder");
         mgnOrderExchangeOrder.setOrderMenuItems(mMgnOrderExchangeCalcTotals.getOrderMenuItems());
         mgnOrderExchangeOrder.setUserGuid(mMgnOrderExchangeCalcTotals.getUserGuid());
-        mgnOrderExchangeOrder.setUserData(new MGNExchangeUserData("John", "Snow", "aaa@bbb.com", "0123456789", "12345"));
-        MGNExchangePaymentData paymentData = new MGNExchangePaymentData("PayWithCash");
-        mgnOrderExchangeOrder.setPaymentData(paymentData);
+        mgnOrderExchangeOrder.setUserData(new MGNExchangeUserData("Serena", "Laurence", "serena_df@test.com", "5555555555", "12345"));
         mgnOrderExchangeOrder.setTableReference("table RED");
-        mgnOrderExchangeOrder.setTargetTime("07-12-2018_11-16-26");
+
+        MGNExchangePaymentData mgnExchangePaymentData = new MGNExchangePaymentData();
+        mgnExchangePaymentData.setExternalPaymentId("Payment ID");
+        mgnExchangePaymentData.setExternalPaymentObject("HMAC");
+        mgnExchangePaymentData.setTipAmount(1.5f);
+        mgnExchangePaymentData.setTotalAmount(6.0f);
+        List<MGNExchangePayment> mgnExchangePayments = new ArrayList<>();
+        MGNExchangePayment payment1 = new MGNExchangePayment("Venutize", 3.50f, new MGNExchangeAdditionalPaymentData("Visa"));
+        MGNExchangePayment payment2 = new MGNExchangePayment("Venutize", 4.0f, new MGNExchangeAdditionalPaymentData("MasterCard"));
+        mgnExchangePayments.add(payment1);
+        mgnExchangePayments.add(payment2);
+        mgnExchangePaymentData.setPayments(mgnExchangePayments);
+
+        mgnOrderExchangeOrder.setPaymentData(mgnExchangePaymentData);
         MGNExchangeDiscount mgnExchangeDiscount = new MGNExchangeDiscount("discountId", "Cool Discount", 3.15f);
         List<MGNExchangeDiscount> discountList = new ArrayList<>();
         discountList.add(mgnExchangeDiscount);
         mgnOrderExchangeOrder.setDiscounts(discountList);
+        mgnOrderExchangeOrder.setDigitalReceiptNotes("Some digital Receipt Notes");
 
         MaeganSDK.getInstance().placeOrder(this, mgnOrderExchangeOrder, CALL_BACK_CODE);
     }

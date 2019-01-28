@@ -8,4 +8,6 @@
     <color name="mgn_primary_dark">#E44418</color> <!-- // ow not used yet in SDK version. -->
     <color name="mgn_accent">#E44418</color> <!-- // // progress dialog, floating button and main buttons-->
     <color name="mgn_tabs">#B8320D</color> <!-- // // color of tabs when DisplayOrderTypeBar = YES-->
+    <color name="mgn_toolbar_title">#0000ff</color> <!-- Toolbar title color -->
+    <color name="mgn_toolbar_back_arrow">#0000ff</color> <!-- Toolbar back arrow color -->
 </resources>
