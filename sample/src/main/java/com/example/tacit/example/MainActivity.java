@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MGNExchangePaymentData mgnExchangePaymentData = new MGNExchangePaymentData();
         mgnExchangePaymentData.setExternalPaymentId("Payment ID");
-        mgnExchangePaymentData.setExternalPaymentObject("HMAC");
+        mgnExchangePaymentData.setExternalPaymentObject("hmac token");
         mgnExchangePaymentData.setTipAmount(1.5f);
         mgnExchangePaymentData.setTotalAmount(6.0f);
         List<MGNExchangePayment> mgnExchangePayments = new ArrayList<>();

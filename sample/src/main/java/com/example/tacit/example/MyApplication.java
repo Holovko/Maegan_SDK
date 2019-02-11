@@ -1,7 +1,9 @@
 package com.example.tacit.example;
 
 import android.app.Application;
+import android.os.Bundle;
 
+import com.tacitinnovations.core.core.app.Settings;
 import com.tacitinnovations.core.sdk.CustomerAppConfig;
 import com.tacitinnovations.core.sdk.MGNAddressInfo;
 import com.tacitinnovations.core.sdk.MGNCustomerInfo;
@@ -28,7 +30,19 @@ public class MyApplication extends Application {
         MaeganConfig maeganConfig = new MaeganConfig.Builder(getApplicationContext()).appConfig(
                 new CustomerAppConfig("dev", "eyJ4NXQiOiJaV0ptTVdJeVlqUTFZVE00WldRM05XRTROMkl5WWpjeU5UZzRabVV6TXpBek9HVXlPRGxtTUEiLCJraWQiOiJkMGVjNTE0YTMyYjZmODhjMGFiZDEyYTI4NDA2OTliZGQzZGViYTlkIiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiLUZRV3YxSGl5Q3RnMHhFUy1NNEkzZyIsInN1YiI6ImIwYzJjZjY1LTdkZDQtNGU4Ny1iYzllLTdhZWEzMzg5ZjE4NSIsImlzcyI6Imh0dHBzOlwvXC9pZG0tc3RnLnZlbnVldGl6ZS5jb21cL29hdXRoMlwvdG9rZW4iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0YWNpdHVzZXIxQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJUZXN0IiwidXVpZCI6ImIwYzJjZjY1LTdkZDQtNGU4Ny1iYzllLTdhZWEzMzg5ZjE4NSIsImFjciI6InVybjptYWNlOmluY29tbW9uOmlhcDpzaWx2ZXIiLCJhdWQiOlsiQVJiWTVyRzk2WlBQWnhxV3l5MmZRd0htQ3VjYSJdLCJhenAiOiJBUmJZNXJHOTZaUFBaeHFXeXkyZlF3SG1DdWNhIiwiZXhwIjoxNTQ1NzgxOTcxLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJpYXQiOjE1NDUxNzcxNzEsImVtYWlsIjoidGFjaXR1c2VyMUBnbWFpbC5jb20ifQ.JLIvAr_FCCGK0IbMO2RoBb8CI3h4x0yLaFsrTbpMkBP-XvOs3EbUR2lIqZMCuMRv2z9lNAZGfpg5Rf60Eta0u0FKlq0bPOeT2WwaosJ-MpT1zK2CD5lmHnfIzHyPoFXwIke8CasEWPqAp-5-PUYXtdEIRyoCEVd_EZPywX8yCIA", "venutizeSDK"))
             .additionalCustomerInfo(mAdditionalCustomerInfo)
+            .setExtraAppSettings(initExtraAppSettings())
             .build();
         MaeganSDK.initialize(maeganConfig);
+    }
+
+    private Bundle initExtraAppSettings(){
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(Settings.SettingNames.HideReorderFlag, true);
+        bundle.putBoolean(Settings.SettingNames.ManageCustomerProfile, false);
+        bundle.putBoolean(Settings.SettingNames.ManagePaymentInstrument, false);
+        bundle.putBoolean(Settings.SettingNames.DisplayOrderTypeBar, false);
+        bundle.putString(Settings.SettingNames.BrandSelector, "User");
+        bundle.putBoolean(Settings.SettingNames.InitiateExternalPaymentFlow, true);
+        return bundle;
     }
 }
