@@ -20,6 +20,7 @@ import com.tacitinnovations.core.sdk.MGNOrderExchangeCalcTotals;
 import com.tacitinnovations.core.sdk.MGNOrderExchangeOrder;
 import com.tacitinnovations.core.sdk.MaeganSDK;
 import com.tacitinnovations.core.sdk.app.SDKError;
+import com.tacitinnovations.core.core.api.model.Discount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,10 +104,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mgnExchangePaymentData.setPayments(mgnExchangePayments);
 
         mgnOrderExchangeOrder.setPaymentData(mgnExchangePaymentData);
-        MGNExchangeDiscount mgnExchangeDiscount = new MGNExchangeDiscount("discountId", "Cool Discount", 3.15f);
-        List<MGNExchangeDiscount> discountList = new ArrayList<>();
-        discountList.add(mgnExchangeDiscount);
-        mgnOrderExchangeOrder.setDiscounts(discountList);
+        // set Discounts
+        Discount discount = mMgnOrderExchangeCalcTotals.getTableCheck().getDiscount();
+        if (discount != null) {
+            MGNExchangeDiscount mgnExchangeDiscount = new MGNExchangeDiscount(String.valueOf(discount.getId()), discount.getName(), discount.getValue());
+            List<MGNExchangeDiscount> discountList = new ArrayList<>();
+            discountList.add(mgnExchangeDiscount);
+            mgnOrderExchangeOrder.setDiscounts(discountList);
+        }
         mgnOrderExchangeOrder.setDigitalReceiptNotes("Some digital Receipt Notes");
 
         MaeganSDK.getInstance().placeOrder(this, mgnOrderExchangeOrder, CALL_BACK_CODE);
